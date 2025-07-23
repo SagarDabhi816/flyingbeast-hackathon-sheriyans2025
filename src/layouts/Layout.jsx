@@ -1,8 +1,11 @@
-import { Outlet } from "react-router-dom";
-import { useEffect } from "react";
+
+import { Navigate, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
+import RosierLoader from "../components/common/RosierLoader ";
+// import RosierLoader from "./components/RosierLoader";
 
 function layout() {
   useEffect(() => {
@@ -23,6 +26,15 @@ function layout() {
       lenis.destroy(); // Cleanup on unmount
     };
   }, []);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3000); // 3 sec loader
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <RosierLoader />;
   return (
     // <div className="layout sm:mx-12 m-5">
     //   <div>
