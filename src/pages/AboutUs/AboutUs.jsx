@@ -1,15 +1,4 @@
-
-  // const Aboutus = () => {
-  //   return (
-  //     <div>Aboutus</div>
-  //   )
-  // }
-
-  // export default Aboutus
-
-  import React from "react";
-
-export default function Aboutus() {
+export default function AboutUs() {
   return (
     <div className="about-page  text-gray-800">
 

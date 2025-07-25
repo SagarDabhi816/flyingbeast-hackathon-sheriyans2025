@@ -4,7 +4,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
-import Aboutus from "./pages/AboutUs/Aboutus";
+import AboutUs from "./pages/AboutUs/AboutUs";
 import ProductsPage from "./pages/Products/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetail/ProductDetail";
 import PrivateRoute from "./pages/ProtectedRoute/ProtectedRoute";
@@ -19,7 +19,7 @@ function App() {
       element: <Layout />,
       children: [
         { index: true, element: <Home /> },
-        { path: "aboutus", element: <Aboutus /> },
+        { path: "aboutus", element: <AboutUs /> },
         { path: "login", element: <Login /> },
         { path: "signup", element: <Signup /> },
         { path: "cart", element: <CartPage /> },
