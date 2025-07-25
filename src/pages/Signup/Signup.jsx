@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { motion } from 'framer-motion';
-
+import { motion } from "framer-motion";
 
 const Signup = () => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -13,7 +12,8 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem("user", JSON.stringify(user));
-    navigate("/login");
+    alert("Account created successfully! Please login.");
+    navigate("/login"); // Redirect to login page after signup
   };
 
   return (
@@ -25,7 +25,7 @@ const Signup = () => {
         <h2 className="text-2xl font-bold text-center text-indigo-600 mb-2 animate-fade-in">
           Sign Up
         </h2>
-       
+
         <input
           type="email"
           name="email"
@@ -52,9 +52,9 @@ const Signup = () => {
           }}
           whileTap={{ scale: 0.97 }}
           className="w-full py-3 px-6 rounded-lg bg-indigo-500 text-indigo-100 font-semibold transition focus:outline-none shadow-lg"
-         
+          type="submit"
         >
-        Create Account
+          Create Account
         </motion.button>
         <p className="text-center text-sm mt-2">
           Already have an account?{" "}

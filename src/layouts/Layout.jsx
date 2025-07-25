@@ -1,11 +1,9 @@
-
 import { Navigate, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
 import RosierLoader from "../components/common/RosierLoader ";
-// import RosierLoader from "./components/RosierLoader";
 
 function layout() {
   useEffect(() => {

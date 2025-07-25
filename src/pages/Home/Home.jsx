@@ -1,19 +1,20 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { LuMilk } from "react-icons/lu";
-import PlayerImage from "/Ghee.webp";
 import { GiFarmer } from "react-icons/gi";
 import { MdAddTask } from "react-icons/md";
 import Footer from "../../components/common/Footer";
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import PlayerImage from "/Ghee.webp";
 
 const Home = () => {
   const videoRef = useRef(null);
   const [sourceLoaded, setSourceLoaded] = useState(false);
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
   const features = [
     {
@@ -86,7 +87,7 @@ const Home = () => {
       image: "/Sliderimg/Bar.png",
       buttonText: "Protein Bars",
     },
-     {
+    {
       image: "/Sliderimg/Ghee.png",
       buttonText: "Gir Cow A2 ghee",
     },
@@ -117,12 +118,16 @@ const Home = () => {
     ],
   };
 
+  function navigateTo(location) {
+    navigate(location);
+  }
+
   useEffect(() => {
     setSourceLoaded(true); // Lazy load on mount
   }, []);
   return (
     <>
-      <div className=" w-full h-screen overflow-hidden">
+      <div className="relative w-full h-screen overflow-hidden">
         <video
           ref={videoRef}
           preload="none"
@@ -132,9 +137,7 @@ const Home = () => {
           muted
           playsInline
         >
-          {sourceLoaded && (
-            <source src="/Homevideo.mov" type="video/mp4" />
-          )}
+          {sourceLoaded && <source src="/Homevideo.mov" type="video/mp4" />}
         </video>
 
         <motion.div
@@ -172,7 +175,7 @@ const Home = () => {
           </svg>
         </motion.div>
 
-        <div className="absolute top-2/4 p-3">
+        <div className="absolute top-2/4 px-8">
           <h1 className="text-3xl ">
             Crafted by Nature. Perfected by Tradition.
           </h1>
@@ -182,22 +185,23 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            // onClick={onClick}
-            className="px-6 py-3 filter  text-white rounded-full font-semibold shadow-xl hover:shadow-lg focus:outline-none text-xl"
+            onClick={() => navigateTo("/products")}
+            className="bg-[#DFC005] text-white px-3 py-3 rounded-lg shadow-lg mt-2 hover:bg-yellow-700 transition duration-300 font-semibold text-md"
+            // className="px-6 py-3 filter  text-white rounded-full font-semibold shadow-xl hover:shadow-lg focus:outline-none text-xl"
           >
             Explore Products
           </motion.button>
         </div>
       </div>
 
-      <section className="bg-[#F7F5ED] py-10 !px-8 !sm:px-10 !md:px-12">
+      <section className="!text-white py-10 !px-8 !sm:px-10 !md:px-12">
         <div className="max-w-8xl mx-auto flex flex-col lg:flex-row items-center gap-10">
           {/* Text Content */}
           <div className="flex-1">
-            <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-black">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-6 ">
               Pure Gold A2 Ghee
             </h1>
-            <p className="text-gray-800 text-base sm:text-lg leading-relaxed">
+            <p className="text-[#f2f2f2] text-base sm:text-lg leading-relaxed">
               WE BELIEVE <span className="font-bold">A2 GHEE</span> IS ROOTED IN
               AGE-OLD TRADITIONS,{" "}
               <span className="font-bold"> HANDCRAFTED FROM GIR COW</span>

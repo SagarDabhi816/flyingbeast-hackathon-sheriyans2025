@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   FaRegArrowAltCircleRight,
   FaFacebookF,
@@ -6,47 +7,59 @@ import {
   FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
 
 const Footer = () => {
+  // Clean, concise company links for Rosier Foods
   const companyLinks = [
-    { label: "About Us", icon: FaRegArrowAltCircleRight, link: "/about" },
+    { label: "About Rosier Foods", icon: FaRegArrowAltCircleRight, link: "/aboutus" },
     { label: "Contact Us", icon: FaRegArrowAltCircleRight, link: "/contact" },
-    { label: "Reservation", icon: FaRegArrowAltCircleRight, link: "/reservation" },
+    { label: "Shop Products", icon: FaRegArrowAltCircleRight, link: "/products" },
     { label: "Privacy Policy", icon: FaRegArrowAltCircleRight, link: "/privacy" },
     { label: "Terms & Conditions", icon: FaRegArrowAltCircleRight, link: "/terms" },
   ];
 
+  // Rosier Foods contact info with subtle icons
   const contactInfo = [
-    { icon: "fa-map-marker-alt", text: "123 Street, New York, USA" },
-    { icon: "fa-phone-alt", text: "+012 345 67890" },
-    { icon: "fa-envelope", text: "info@example.com" },
+    { icon: "map-marker-alt", text: "Rosier Foods HQ, New Delhi, India" },
+    { icon: "phone-alt", text: "+91 98765 43210" },
+    { icon: "envelope", text: "support@rosierfoods.com" },
   ];
 
+  // Social media links with recognizable official URLs
   const socialLinks = [
-    { icon: FaTwitter, url: "#" },
-    { icon: FaFacebookF, url: "#" },
-    { icon: FaYoutube, url: "#" },
-    { icon: FaLinkedin, url: "#" },
+    { icon: BsTwitterX, url: "https://twitter.com/rosierfoods" },
+    { icon: FaFacebookF, url: "https://facebook.com/rosierfoods" },
+    { icon: FaYoutube, url: "https://youtube.com/rosierfoods" },
+    { icon: FaLinkedin, url: "https://linkedin.com/company/rosierfoods" },
   ];
-
-  
 
   return (
-    <footer className="bg-gray-900 text-white pt-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <footer className="bg-white text-gray-700 pt-12 select-none border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+          {/* Rosier Foods Info */}
+          <div>
+            <h4 className="text-2xl font-semibold text-rose-600 mb-6 tracking-wide">Rosier Foods</h4>
+            <p className="text-gray-600 leading-relaxed max-w-xs">
+              Nourishing wellness inspired by nature and tradition. Crafted with love, for your wholesome life.
+            </p>
+           
+          </div>
+
           {/* Company Links */}
           <div>
-            <h4 className="text-xl text-primary font-semibold mb-4">Company</h4>
-            <ul className="space-y-2">
-              {companyLinks.map((link, index) => (
-                <li key={index}>
+            <h4 className="text-xl font-semibold mb-6 text-gray-900">Company</h4>
+            <ul className="space-y-3">
+              {companyLinks.map(({ label, icon, link }, idx) => (
+                <li key={idx}>
                   <a
-                    href={link.link}
-                    className="flex items-center text-gray-300 hover:text-white transition"
+                    href={link}
+                    className="flex items-center text-gray-600 hover:text-rose-600 transition"
                   >
-                    {React.createElement(link.icon, { className: "mr-2 text-lg" })}
-                    {link.label}
+                    {React.createElement(icon, { className: "mr-3 text-rose-600 text-lg" })}
+                    {label}
                   </a>
                 </li>
               ))}
@@ -55,66 +68,60 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-xl text-primary font-semibold mb-4">Contact</h4>
-            <ul className="space-y-2">
-              {contactInfo.map((info, index) => (
-                <li key={index} className="flex items-center text-gray-300">
-                  <i className={`fas ${info.icon} mr-3`}></i>
-                  {info.text}
+            <h4 className="text-xl font-semibold mb-6 text-gray-900">Contact</h4>
+            <ul className="space-y-4">
+              {contactInfo.map(({ icon, text }, idx) => (
+                <li key={idx} className="flex items-center text-gray-600">
+                  <i className={`fas fa-${icon} mr-4 text-rose-600 text-lg`}></i>
+                  <span>{text}</span>
                 </li>
               ))}
             </ul>
-            <div className="flex space-x-3 mt-4">
-              {socialLinks.map((social, index) => (
+          </div>
+
+          {/* Newsletter Subscription */}
+          <div>
+            <h4 className="text-xl font-semibold mb-6 text-gray-900">Follow Us on </h4>
+            <div className="flex space-x-4 mt-8">
+              {socialLinks.map(({ icon: Icon, url }, idx) => (
                 <a
-                  key={index}
-                  href={social.url}
+                  key={idx}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white text-lg transition"
+                  aria-label={`Follow Rosier Foods on ${
+                    Icon.displayName || "social media"
+                  }`}
+                  className="text-rose-600 hover:text-rose-800 transition text-4xl"
                 >
-                  {React.createElement(social.icon)}
+                  <Icon />
                 </a>
               ))}
             </div>
-          </div>
-
-         
-
-          {/* Newsletter */}
-          <div>
-            <h4 className="text-xl text-primary font-semibold mb-4">Newsletter</h4>
-            <p className="text-gray-300 mb-4">
-              Dolor amet sit justo amet elitr clita ipsum elitr est.
-            </p>
-            <div className="relative max-w-xs">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="w-full py-2 px-4 pr-20 rounded bg-gray-800 text-white border border-primary focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-              <button
-                type="button"
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded hover:bg-opacity-80 transition"
-              >
-                SignUp
-              </button>
-            </div>
+           
           </div>
         </div>
       </div>
 
-      {/* Bottom Footer */}
-      <div className="bg-gray-800 py-4">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-evenly items-center text-sm text-gray-400">
-          <div className="mb-2 md:mb-0 text-center md:text-left">
-            © <a className="text-white hover:underline" href="#">Rosier Foods Private Limited</a>. All Rights Reserved.
+      {/* Bottom Bar */}
+      <div className="bg-gray-50 py-6 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 space-y-3 md:space-y-0">
+          <div>
+            &copy; {new Date().getFullYear()} Rosier Foods Private Limited. All rights reserved.
           </div>
-          <div className="space-x-4 text-center md:text-right">
-            <a href="#" className="hover:underline">Home</a>
-            <a href="#" className="hover:underline">Cookies</a>
-            <a href="#" className="hover:underline">Help</a>
-            <a href="#" className="hover:underline">FAQs</a>
+          <div className="flex space-x-8">
+            <a href="/" className="hover:text-rose-600 transition">
+              Home
+            </a>
+            <a href="/terms" className="hover:text-rose-600 transition">
+              Terms
+            </a>
+            <a href="/privacy" className="hover:text-rose-600 transition">
+              Privacy
+            </a>
+            <a href="/help" className="hover:text-rose-600 transition">
+              Help
+            </a>
           </div>
         </div>
       </div>
