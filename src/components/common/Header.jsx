@@ -10,6 +10,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import products from "../../Data/Products";
 import { useCart } from "../../context/CartContext";
+import { toast } from "react-toastify";
 
 const categories = [...new Set(products.map((p) => p.category))];
 
@@ -52,6 +53,7 @@ const Header = () => {
     setDropdownOpen(false);
     setMobileNavOpen(false);
     setMobileDropdownOpen(false);
+   
   }, [location.pathname]);
 
   // Scroll event to show/hide header based on scroll direction
@@ -75,6 +77,7 @@ const Header = () => {
   const logoutHandler = () => {
     localStorage.removeItem("isAuthenticated");
     setIsLoggedIn(false);
+    toast.success("Logged out successfully");
     navigate("/login");
   };
 

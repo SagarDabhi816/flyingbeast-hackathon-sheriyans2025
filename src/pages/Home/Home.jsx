@@ -137,7 +137,7 @@ const Home = () => {
           muted
           playsInline
         >
-          {sourceLoaded && <source src="/Homevideo.mov" type="video/mp4" />}
+          {sourceLoaded && <source src="/Homevideo.mp4" type="video/mp4" />}
         </video>
 
         <motion.div

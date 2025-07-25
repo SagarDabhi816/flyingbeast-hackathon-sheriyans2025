@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
+import products from "../../Data/Products";
+import { useParams } from "react-router-dom";
 
 export default function AccountPage() {
   const [orders, setOrders] = useState([]);
+
+  const { id } = useParams();
+   const product = products.find((p) => p.id === id);
+    const [selectedImage, setSelectedImage] = useState(product?.images?.[0] || product?.image);
 
   useEffect(() => {
     const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
@@ -18,7 +24,7 @@ export default function AccountPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-10">
+    <div className="container mx-auto px-4 py-10 mt-30">
       <h1 className="text-3xl font-bold mb-8 text-center">My Orders</h1>
       <div className="flex flex-col gap-8">
         {orders.map((order) => (
@@ -46,7 +52,7 @@ export default function AccountPage() {
                       <td className="py-1 px-2">
                         <div className="flex items-center gap-3">
                           <img
-                            src={product.image}
+                            src={product.images[0]}
                             alt={product.name}
                             className="w-10 h-10 object-cover rounded"
                           />

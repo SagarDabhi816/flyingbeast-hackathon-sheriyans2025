@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -19,10 +20,11 @@ const Login = () => {
       credentials.password === user.password
     ) {
       localStorage.setItem("isAuthenticated", "true"); // Set auth flag on login
-      alert("Welcome back!");
+    
       navigate("/"); // Redirect to home or other page
+      toast.success("Login successful!");
     } else {
-      alert("Invalid credentials");
+      toast.error("Invalid email or password. Please try again.");
     }
   };
 

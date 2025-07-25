@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -12,9 +13,9 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem("user", JSON.stringify(user));
-    alert("Account created successfully! Please login.");
     navigate("/login"); // Redirect to login page after signup
-  };
+    toast.success("Account created successfully! Please login.");  
+    }
 
   return (
     <div className="!text-black flex min-h-screen items-center justify-center bg-transparent">

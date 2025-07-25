@@ -3,8 +3,13 @@ import products from "../../Data/Products";
 import { useCart } from "../../context/CartContext";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function ProductDetailPage() {
+
+   const auth = localStorage.getItem("isAuthenticated") === "true";
+
+  
   const { id } = useParams();
   const product = products.find((p) => p.id === id);
   const { addToCart } = useCart();
@@ -27,6 +32,7 @@ export default function ProductDetailPage() {
   const handleAddToCart = () => {
     addToCart({ ...product, quantity }); // Pass quantity too
     setButtonAnimation(true);
+    toast.success(`${product.name} added to cart!`);
     setTimeout(() => setButtonAnimation(false), 300);
   };
 
@@ -95,7 +101,11 @@ export default function ProductDetailPage() {
             </button>
           </div>
 
-          <motion.button
+        
+
+          {
+            auth ? (
+               <motion.button
             onClick={handleAddToCart}
             animate={buttonAnimation ? { scale: 1.2 } : { scale: 1 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
@@ -103,6 +113,20 @@ export default function ProductDetailPage() {
           >
             Add to Cart
           </motion.button>
+            ) : (
+              // <p className="text-sm text-red-500 mt-2">
+              //   Please log in to add items to your cart.
+              // </p>
+                <motion.button
+            onClick={()=>toast.error("Please login to add items to cart")}
+            animate={buttonAnimation ? { scale: 1.2 } : { scale: 1 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className="bg-rose-600 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-rose-700 active:scale-95"
+          >
+          Please log in to add items to your cart.
+          </motion.button>
+            )
+          }
         </div>
       </div>
     </div>
