@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
-import products from "../../Data/Products";
-import { useParams } from "react-router-dom";
-
 export default function AccountPage() {
   const [orders, setOrders] = useState([]);
 
-  const { id } = useParams();
-   const product = products.find((p) => p.id === id);
-    const [selectedImage, setSelectedImage] = useState(product?.images?.[0] || product?.image);
+
 
   useEffect(() => {
     const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    console.log("Stored Orders:", storedOrders);
     setOrders(storedOrders.reverse()); // most recent first
   }, []);
 
@@ -51,6 +48,7 @@ export default function AccountPage() {
                     <tr key={product.id} className="border-b last:border-b-0">
                       <td className="py-1 px-2">
                         <div className="flex items-center gap-3">
+                       {console.log(product)}
                           <img
                             src={product.images[0]}
                             alt={product.name}

@@ -13,7 +13,8 @@ export default function ProductsPage() {
       const id = location.hash.replace("#", "");
       const el = document.getElementById(id);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+       el.scrollIntoView({ behavior: "smooth", block: "center" });
+
       }
     } else {
       // Optional: scroll to top if no hash present
@@ -22,7 +23,7 @@ export default function ProductsPage() {
   }, [location]);
 
   return (
-    <div className="container mx-auto px-4 py-10 mt-20">
+    <div className="container mx-auto px-4 py-10 mt-40">
       <h1 className="text-3xl font-bold mb-8 text-center">Our Products</h1>
       {categories.map((category) => (
          <section key={category} id={category.replace(/\s+/g, "")} className="mb-16">

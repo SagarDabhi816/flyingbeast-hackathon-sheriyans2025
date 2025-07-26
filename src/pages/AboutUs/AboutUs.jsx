@@ -1,9 +1,9 @@
 export default function AboutUs() {
   return (
-    <div className="about-page  text-gray-800">
+    <div className="about-page  text-gray-800 sm:mt-40 mt-20">
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[70vh] bg-cover bg-center mt-30" style={{
+      <section className="relative h-[70vh] md:h-[90vh] bg-cover bg-center " style={{
         backgroundImage:
           "url('https://www.rosierfoods.com/cdn/shop/files/A_NOTE_FROM_OUR_FOUNDER_Website_1.png?v=1743061487&width=2000')"
       }}>
@@ -20,7 +20,7 @@ export default function AboutUs() {
 
       {/* Our Story */}
       <section className="bg-rose-50 py-16 px-6 md:px-20 text-center md:text-left flex flex-col md:flex-row items-center gap-12 max-w-7xl mx-auto">
-        <div className="md:w-1/2">
+        <div className="md:w-2/3">
           <h2 className="text-3xl font-semibold mb-6">Our Story</h2>
           <p className="text-gray-700 text-lg leading-relaxed">
             Rosier Foods was born from a passion for authentic nourishment and a belief in the power of nature’s bounty. We partner directly with Indian farmers, ensuring every product carries the purity of tradition and the care of conscious sourcing.
@@ -28,11 +28,11 @@ export default function AboutUs() {
             From our kitchen to yours, we’re committed to real taste, clean ingredients, and joyful health for families everywhere.
           </p>
         </div>
-        <div className="md:w-1/2">
+        <div className="md:w-2/3">
           <img
             src="https://www.rosierfoods.com/cdn/shop/files/rosier_family.png?v=1743061819&width=750"
             alt="Founder or Team"
-            className="rounded-xl shadow-lg w-[70%] mx-auto md:mx-0 object-cover"
+            className="rounded-xl shadow-lg w-[100%] mx-auto md:mx-0 object-cover"
           />
         </div>
       </section>
@@ -90,22 +90,22 @@ export default function AboutUs() {
             {
               name: "Oils",
               caption: "Cold-pressed for real flavor",
-              image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=400&q=80",
+              image: "https://www.rosierfoods.com/cdn/shop/files/4_820331d1-d211-419f-951b-9b7e1b53353c.jpg?v=1746737560&width=823",
             },
             {
               name: "Ghee",
               caption: "A2 cow ghee, the golden elixir",
-              image: "https://images.unsplash.com/photo-1565992449538-6f6a8af44a48?auto=format&fit=crop&w=400&q=80",
+              image: "https://www.rosierfoods.com/cdn/shop/files/Untitled_Artwork62.jpg?v=1746308532&width=823",
             },
             {
               name: "Nut Butters",
               caption: "Pure, protein-rich spreads",
-              image: "https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&w=400&q=80",
+              image: "https://www.rosierfoods.com/cdn/shop/files/dark_choco_front_65d098de-da74-46fe-8524-d15caa20a2bf.jpg?v=1743062114&width=823",
             },
             {
               name: "Pooja Essentials",
               caption: "For every sacred moment",
-              image: "https://images.unsplash.com/photo-1518432030-fd8a0d487782?auto=format&fit=crop&w=400&q=80",
+              image: "https://www.rosierfoods.com/cdn/shop/files/BakhoorStand.jpg?v=1743151474&width=360",
             },
           ].map(({ name, caption, image }) => (
             <div
@@ -162,9 +162,9 @@ export default function AboutUs() {
           WhatsApp: <a href="https://wa.me/1234567890" target="_blank" rel="noreferrer" className="text-rose-600 hover:underline">+91 12345 67890</a>
         </p>
         <div className="flex justify-center space-x-6 mb-6">
-          <a href="https://facebook.com/rosierfoods" target="_blank" rel="noreferrer" aria-label="Facebook" className="text-rose-600 hover:text-rose-800 text-2xl">📘</a>
-          <a href="https://instagram.com/rosierfoods" target="_blank" rel="noreferrer" aria-label="Instagram" className="text-rose-600 hover:text-rose-800 text-2xl">📸</a>
-          <a href="https://twitter.com/rosierfoods" target="_blank" rel="noreferrer" aria-label="Twitter" className="text-rose-600 hover:text-rose-800 text-2xl">🐦</a>
+          <a href="https://facebook.com/rosierfoods" target="_blank" rel="noreferrer" aria-label="Facebook" className="text-[#106AFF] hover:text-rose-800 text-2xl">Facebook</a>
+          <a href="https://instagram.com/rosierfoods" target="_blank" rel="noreferrer" aria-label="Instagram" className="text-[#FF0F6C] hover:text-rose-800 text-2xl">Instagram </a>
+          <a href="https://twitter.com/rosierfoods" target="_blank" rel="noreferrer" aria-label="Twitter" className="text-[#24AFF2] hover:text-rose-800 text-2xl">Twitter</a>
         </div>
         <a
           href="/products"

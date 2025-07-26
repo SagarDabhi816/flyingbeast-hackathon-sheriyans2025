@@ -88,9 +88,9 @@ const Header = () => {
       transition={{ duration: 0.3, ease: "easeOut" }}
       className=" w-full flex flex-col items-center z-50 sticky top-0"
     >
-      <div className="header w-[90%] container mx-auto flex items-center justify-around px-2 sm:px-8 py-2 fixed top-5">
+      <div className="header w-[90%] container mx-auto flex items-center justify-center px-2 sm:px-8 py-2 fixed top-5">
         {/* Left Links (Desktop) */}
-        <div className="hidden md:flex items-center gap-6 text-sm sm:text-md">
+        <div className="flex items-center gap-4 min-w-0 flex-1">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -106,6 +106,24 @@ const Header = () => {
                   <span className="absolute -left-5 top-2 h-2 w-2 rounded-full bg-green-500 animate-pulse" />
                 )}
                 Home
+              </>
+            )}
+          </NavLink>
+
+          <NavLink
+            to="/aboutus"
+            className={({ isActive }) =>
+              `relative hover:text-rose-600 transition ${
+                isActive ? "font-semibold text-rose-600" : ""
+              }`
+            }
+          >
+            {({ isActive }) => (
+              <>
+                {isActive && (
+                  <span className="absolute -left-5 top-2 h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                )}
+                About Us
               </>
             )}
           </NavLink>
@@ -163,24 +181,6 @@ const Header = () => {
           </div>
 
           <NavLink
-            to="/aboutus"
-            className={({ isActive }) =>
-              `relative hover:text-rose-600 transition ${
-                isActive ? "font-semibold text-rose-600" : ""
-              }`
-            }
-          >
-            {({ isActive }) => (
-              <>
-                {isActive && (
-                  <span className="absolute -left-5 top-2 h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                )}
-                About Us
-              </>
-            )}
-          </NavLink>
-
-          <NavLink
             to="/products"
             className={({ isActive }) =>
               `ml-2 relative hover:text-rose-600 transition ${
@@ -200,14 +200,14 @@ const Header = () => {
         </div>
 
         {/* Logo Center */}
-        <div className="flex justify-center flex-1 ">
+        <div className="hidden sm:flex justify-center flex-shrink-0">
           <NavLink to="/" className="inline-block">
             <img src={Logo} alt="Logo" className="w-16 sm:w-28" />
           </NavLink>
         </div>
 
         {/* Right Links (Desktop) */}
-        <div className="hidden md:flex items-center gap-15 text-sm sm:text-md">
+        <div className="flex items-center gap-4 justify-end min-w-0 flex-1">
           {isLoggedIn ? (
             <>
               <NavLink
